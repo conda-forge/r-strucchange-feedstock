@@ -1,5 +1,4 @@
 {% set version = '1.5-1' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,12 +9,13 @@ package:
 source:
   fn: strucchange_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/strucchange_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/strucchange/strucchange_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/strucchange_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/strucchange/strucchange_{{ version }}.tar.gz
   sha256: 740e2e20477b9fceeef767ae1002adc5ec397cb0f7daba5289a2c23b0dddaf31
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,6 +23,8 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-sandwich
     - r-zoo
@@ -33,14 +35,13 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('strucchange')"  # [not win]
+    - $R -e "library('strucchange')"           # [not win]
     - "\"%R%\" -e \"library('strucchange')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=strucchange
-  license: GPL-3
-  summary: |
-    Testing, monitoring and dating structural changes in (linear) regression models. strucchange
+  license: GPL-2 | GPL-3
+  summary: Testing, monitoring and dating structural changes in (linear) regression models. strucchange
     features tests/methods from the generalized fluctuation test framework as well as
     from the F test (Chow test) framework. This includes methods to fit, plot and test
     fluctuation processes (e.g., CUSUM, MOSUM, recursive/moving estimates) and F statistics,
@@ -49,8 +50,14 @@ about:
     together with confidence intervals. Emphasis is always given to methods for visualizing
     the data.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
