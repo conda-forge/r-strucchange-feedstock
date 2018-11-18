@@ -14,9 +14,9 @@ source:
   sha256: 740e2e20477b9fceeef767ae1002adc5ec397cb0f7daba5289a2c23b0dddaf31
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -50,8 +50,7 @@ about:
     together with confidence intervals. Emphasis is always given to methods for visualizing
     the data.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
