@@ -1,4 +1,4 @@
-{% set version = '1.5-1' %}
+{% set version = "1.5-2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/strucchange_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/strucchange/strucchange_{{ version }}.tar.gz
-  sha256: 740e2e20477b9fceeef767ae1002adc5ec397cb0f7daba5289a2c23b0dddaf31
+  sha256: 7d247c5ae6f5a63c80e478799d009c57fb8803943aa4286d05f71235cc1002f8
 
 build:
   noarch: generic
   merge_build_host: True  # [win]
-  number: 1002
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
