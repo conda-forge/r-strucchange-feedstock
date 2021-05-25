@@ -45,7 +45,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=strucchange
-  license: GPL-2 | GPL-3
+  license: GPL-2.0-or-later
   summary: Testing, monitoring and dating structural changes in (linear) regression models. strucchange
     features tests/methods from the generalized fluctuation test framework as well as
     from the F test (Chow test) framework. This includes methods to fit, plot and test
