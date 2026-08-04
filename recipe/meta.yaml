@@ -1,4 +1,4 @@
-{% set version = "1.5-4" %}
+{% set version = "1.6-0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/strucchange_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/strucchange/strucchange_{{ version }}.tar.gz
-  sha256: 789bc64d36a79539d17db5e3d50a3f32cf709a42177ffd336c10a8201b5dd718
+  sha256: 6f2ca684f0d78cc8d843da25ec03da05533073956f39c52c426fecb20ef66395
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -53,8 +53,9 @@ test:
 about:
   home: https://CRAN.R-project.org/package=strucchange
   license: GPL-2.0-or-later
-  summary: Testing, monitoring and dating structural changes in (linear) regression models. strucchange features tests/methods from the generalized fluctuation test framework as well as from the F test (Chow test) framework. This includes methods to fit, plot and test fluctuation processes (e.g., CUSUM, MOSUM, recursive/moving
-    estimates) and F statistics, respectively. It is possible to monitor incoming data online using fluctuation processes. Finally, the breakpoints in regression models with structural changes can be estimated together with confidence intervals. Emphasis is always given to methods for visualizing the data.
+  summary: Testing, monitoring and dating structural changes in (linear) regression models. strucchange features tests/methods from the generalized fluctuation test framework as well as from the F test (Chow test) framework. This includes methods to fit, plot and test fluctuation processes (e.g., CUSUM, MOSUM, 
+    recursive/moving estimates) and F statistics, respectively. It is possible to monitor incoming data online using fluctuation processes. Finally, the breakpoints in regression models with structural changes can be estimated together with confidence intervals. Emphasis is always given to methods for visualizing the 
+    data.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
